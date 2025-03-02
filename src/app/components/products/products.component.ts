@@ -7,10 +7,11 @@ import { HighlightCardDirective } from '../../directives/highlight-card.directiv
 import { filter } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { OrderService } from '../../services/order.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule,FormsModule,HighlightCardDirective],
+  imports: [CommonModule,FormsModule,HighlightCardDirective,RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -18,12 +19,12 @@ export class ProductsComponent implements OnChanges {
   products: Iproduct[] = [];
   filterdProducts: Iproduct[] = [];
   @Input() receivedCategory: number=0;
+  @Output() onSendProduct: EventEmitter<{ product: Iproduct, price: number, count: number }>;
   
   
   count: number = 0;
   //define publisher (event emitter)
-  @Output() onSendProduct: EventEmitter<{ product: Iproduct, price: number, count: number }>;
-  constructor(private _productServiec: ProductService, private _orderService: OrderService) {
+  constructor(private _productServiec: ProductService, private router:Router) {
     // Initialize products from service
     this.products = this._productServiec.products;
     this.filterdProducts = this.products; // Set initial filtered products to all products
@@ -49,5 +50,9 @@ export class ProductsComponent implements OnChanges {
           this.filterdProducts = this._productServiec.getProductByCatId(this.receivedCategory);
       }
       console.log('After filter - Products:', this.filterdProducts);
+  }
+
+  navgateToDetails(id:number){
+    this.router.navigateByUrl(`/details/${id}`);
   }
 }
