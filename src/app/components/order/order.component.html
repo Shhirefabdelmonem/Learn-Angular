@@ -1,0 +1,23 @@
+<h2>order</h2>
+<!-- <div>Count :{{ count }}</div> -->
+<div>
+  <select class="form-select form-select-lg "name="" id="" [(ngModel)]="selectedCategorId" >
+    <option selected value="0">All</option>
+    @for(cat of category; track cat.id;){
+
+        <option  value="{{cat.id}}">{{cat.name}}</option>
+    }
+  </select>
+</div>
+<!-- send event value   -->
+<app-products [receivedCategory]="selectedCategorId" (onSendProduct)="viewShoppingCart($event)"></app-products>
+
+<!-- show shopping cart -->
+<div *ngIf="boughtProducts.length > 0">
+  <h3>Bought Products</h3>
+  <ul>
+    <li *ngFor="let item of boughtProducts">
+      Product: {{ item.product.name }}, Price: {{ item.price }}, Count: {{ item.count }}
+    </li>
+  </ul>
+</div>

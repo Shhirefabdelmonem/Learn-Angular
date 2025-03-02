@@ -1,0 +1,8 @@
+.cust{
+  border-radius:100px ;
+  background-color : black;
+  border-color:black;
+  
+  &:focus {
+    background-color: black; }
+}
