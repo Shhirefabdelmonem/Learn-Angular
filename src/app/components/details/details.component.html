@@ -1,3 +1,8 @@
 <p>details works!</p>
 <h1>{{product?.name}}</h1>
 <h1>{{product?.price}}</h1>
+<button class="btn btn-primary" (click)="goBack()">Back</button>
+<div>
+    <button class="btn btn-outline-danger"(click)="prev()" [disabled]="currentId==idArr[0]">previous</button>
+    <button class="btn btn-outline-primary" (click)="next()"[disabled]="currentId==idArr[idArr.length-1]">next</button>
+</div>
