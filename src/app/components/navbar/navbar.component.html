@@ -16,6 +16,13 @@
           <a class="nav-link " aria-current="page" routerLink="/about-us"  routerLinkActive="active bg-success">about-us</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/login"  routerLinkActive="active bg-success">
+            <span *ngIf="isLoggedIn">login</span>
+            <span  *ngIf="!isLoggedIn">logout </span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">

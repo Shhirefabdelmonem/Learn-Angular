@@ -8,6 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { VisionComponent } from './components/vision/vision.component';
 import { ValuesComponent } from './components/values/values.component';
 import { DetailsComponent } from './components/details/details.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
     {path:'',redirectTo: 'home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ export const routes: Routes = [
             {path: 'values',component:ValuesComponent}
         ]
     },
+    {path:'login', component:LoginComponent},
     {path:'**', component: NotFoundComponent}
 
 ];
