@@ -9,12 +9,13 @@ import { VisionComponent } from './components/vision/vision.component';
 import { ValuesComponent } from './components/values/values.component';
 import { DetailsComponent } from './components/details/details.component';
 import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path:'',redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'order',component: OrderComponent},
-    {path:'products',component:ProductsComponent},
+    {path:'products',component:ProductsComponent,canActivate: [authGuard]},
     {path:'details/:id',component:DetailsComponent},
     {path: 'about-us',component: AboutUsComponent, 
         children: [
