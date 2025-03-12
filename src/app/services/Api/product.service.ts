@@ -21,5 +21,8 @@ export class ProductService {
     return this._httpClient.get<Iproduct[]>(`${environment.baseUrl}/products?categoryId=${CatId}`);
   }
 
+  addProduct(product:Iproduct):Observable<Iproduct>{
+    return this._httpClient.post<Iproduct>(`${environment.baseUrl}/products`,product);
+  }
   
 }

@@ -10,12 +10,14 @@ import { ValuesComponent } from './components/values/values.component';
 import { DetailsComponent } from './components/details/details.component';
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 export const routes: Routes = [
     {path:'',redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'order',component: OrderComponent},
     {path:'products',component:ProductsComponent,canActivate: [authGuard]},
+    {path:'add-product',component:AddProductComponent},
     {path:'details/:id',component:DetailsComponent},
     {path: 'about-us',component: AboutUsComponent, 
         children: [
